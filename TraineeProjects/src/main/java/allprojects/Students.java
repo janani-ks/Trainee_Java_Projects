@@ -5,8 +5,11 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class Students
-{
+public class Students{
+	private Students() {
+		
+	}
+	static PrintStream display=new PrintStream((new FileOutputStream(FileDescriptor.out)));
 	static boolean b = false;
 	static double storedouble() {
 		Scanner scan = new Scanner(System.in);
@@ -15,6 +18,7 @@ public class Students
 			return scan.nextDouble();
 		}
 		catch(Exception e) {
+			display.print("Enter valid GPA = ");
 			b = false;
 			return 0;
 		}
@@ -26,13 +30,13 @@ public class Students
 			return scan.nextInt();
 		}
 		catch(Exception e) {
+			display.print("Enter valid GPA = ");
 			b = false;
 			return 0;
 		}
 	}
 	public static void methodCall() {
 		Scanner scan1 = new Scanner(System.in);
-		PrintStream display=new PrintStream((new FileOutputStream(FileDescriptor.out)));
 		display.println("Enter Student Details : ");
 		display.print("Student Name = ");
 		String studentname = scan1.nextLine();
@@ -65,6 +69,7 @@ public class Students
 		}
 		b = false;
         obj.update(gpa);
+        break;
 		case 2:
         display.println(obj.print());
         break;
