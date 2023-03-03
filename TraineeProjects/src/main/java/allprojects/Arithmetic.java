@@ -9,6 +9,9 @@ public class Arithmetic {
 	static LinkedList<Character> operationlist = new LinkedList<Character>();
 	static float f = 0;
 	static char cal;
+	private Arithmetic() {
+		
+	}
 	static boolean empty() {
 		boolean b = true;
 		if(operationlist.isEmpty()) 
@@ -21,54 +24,46 @@ public class Arithmetic {
 		else
 			return 2;
 	}
-	static boolean store1() {
+	static void store1() {
+		do {
 		Scanner scan = new Scanner(System.in);
 		try {
-		Calculation.p.println("Enter the value ");
 		float n = scan.nextFloat();
 		f = n;
-		return true;
+		break;
 		}
 		catch(Exception e) {
-			return false;
-		}
+			Calculation.p.print("Enter the valid number : ");
+		}}while(1>0);
 	}
-	static boolean store2() {
+	static void store2() {
+		do {
 		Scanner scan = new Scanner(System.in);
 		try {
-		Calculation.p.println("Enter the operation ");
 		char o = scan.next().charAt(0);
 		if(o == '+' || o == '-' ||o == '/' ||o == '*'|| o=='=') {
 			cal = o;
-			return true;
+			break;
 		}
 		else
 			throw new InvalidOperationException("operation is not valid to calculate");
 		}
 		catch(Exception e) {
-			return false;
-		}
+			Calculation.p.print("Enter the valid operation : ");
+		}}while(1>0);
 	}
 	public static void methodCall() {
 		float ans = 0;
 		Calculation obj = new Calculation();
 		ArrayList<Calculation> arr = new ArrayList<Calculation>();
 		while(1>0) {
-			if(store1()) {
-				while(1>0){
-					if(store2()) {
-						arr.add(new Calculation(f,cal));
-					    break;
-					}
-					else {
-						continue;
-					}
-				}
-				if( cal == '=')
-				     break;
-			}
-			else 
-				continue;
+			Calculation.p.print("Enter the value ");
+			store1();
+			Calculation.p.print("Enter the operation ");
+			store2();
+			arr.add(new Calculation(f,cal));
+			if( cal == '=')
+				break;
 		}
 		valuelist.add(arr.get(0).number);
 		for(int j=1;j<arr.size();j++) {
