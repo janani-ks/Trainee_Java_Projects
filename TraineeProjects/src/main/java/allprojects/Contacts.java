@@ -103,7 +103,7 @@ public class Contacts {
 		    	  }
 		    	  break;
 		      case 3:
-		    	  StoreAndManage.p.print("Enter Contact Number = ");
+		    	  StoreAndManage.p.print("Enter the Contact Number = ");
 		    	  numstore();
 		    	  b = true;
 		      	  for(int i=0;i<list.size();i++) {
@@ -130,7 +130,7 @@ public class Contacts {
 		    	  k = searchByName(n4);
 		    	  break;
 		      case 6:
-		    	  StoreAndManage.p.print("Enter Contact Number = ");
+		    	  StoreAndManage.p.print("Enter the Contact Number = ");
 		    	  numstore() ;
 		    	  k = searchByNumber(number1);
 		    	  break;
