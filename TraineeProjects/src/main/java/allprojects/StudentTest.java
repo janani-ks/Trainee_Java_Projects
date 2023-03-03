@@ -10,6 +10,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 public class StudentTest {
+	private StudentTest(){
+	}
 	static PrintStream display=new PrintStream((new FileOutputStream(FileDescriptor.out)));
 	static int age;
 	static double gpa;
