@@ -7,18 +7,19 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Shapes {
+    private Shapes() {
+		
+	}
 	static PrintStream display=new PrintStream((new FileOutputStream(FileDescriptor.out)));
-	static boolean b=false;
 	static double storedouble() {
+		do {
 		try {
 			Scanner scan = new Scanner(System.in);
-			b = true;
 			return scan.nextDouble();
 		}
 		catch(Exception e) {
-			b = false;
-			return 0;
-		}
+			display.print("Enter a valid dimention : ");
+		}}while(1>0);
 	}
     public static void methodCall(){
 		double perimeter;
@@ -41,28 +42,15 @@ public class Shapes {
         int n;
         switch(type){
             case "Triangle":
-            display.println("Enter the Triangle Base,Side and Height :");
             double side;
-            while(1>0) {
-            	side = storedouble();
-            	if(b)
-            		break;
-            }
-            b=false;
+            display.print("Base : ");
+            side=storedouble();
             double base;
-            while(1>0) {
-            	base = storedouble();
-            	if(b)
-            		break;
-            }
-            b=false;
+            display.print("Side : ");
+            base=storedouble();
             double height;
-            while(1>0) {
-            	height = storedouble();
-            	if(b)
-            		break;
-            }
-            b=false;
+            display.print("Height : ");
+            height=storedouble();
             BasicShapes t = new BasicShapes(side,base,height);
             n = 1;
             perimeter=t.perimeter(n);
@@ -71,21 +59,12 @@ public class Shapes {
             display.println("The area of Triangle = "+area);
             break;
             case "Rectangle":
-            display.println("Enter the Rectangle Height and Width:");
+            display.print("Height : ");
             double height1;
-            while(1>0) {
-            	height1 = storedouble();
-            	if(b)
-            		break;
-            }
-            b=false;
+            height1=storedouble();
             double width;
-            while(1>0) {
-            	width = storedouble();
-            	if(b)
-            		break;
-            }
-            b=false;
+            display.print("Width : ");
+            width=storedouble();
             BasicShapes r = new BasicShapes(height1,width);
             n = 2;
             perimeter=r.perimeter(n);
@@ -94,14 +73,9 @@ public class Shapes {
             display.println("The area of Rectangle = "+area);
             break;
             case "Circle":
-            display.println("Enter the Circle Radius :");
             double radius;
-            while(1>0) {
-            	radius = storedouble();
-            	if(b)
-            		break;
-            }
-            b=false;
+            display.print("Radius : ");
+            radius=storedouble();
             BasicShapes c = new BasicShapes(radius);
             n = 3;
             perimeter=c.perimeter(n);
