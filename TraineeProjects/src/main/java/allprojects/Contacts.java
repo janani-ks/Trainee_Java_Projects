@@ -16,11 +16,15 @@ public class Contacts {
 	static boolean b;
 	static int choice;
 	static long number1;
+	private Contacts() {
+		
+	}
 	static void add() {
 		StoreAndManage.p.println("Enter Person "+count+" Details!!");
 		StoreAndManage.p.print("Enter Name = ");
 		name = s.nextLine();
-		while(numstore()) ;
+		StoreAndManage.p.print("Enter Contact Number = ");
+		numstore() ;
 		StoreAndManage.p.print("Enter Email Address = ");
 		email = s2.nextLine();	
 		list.add(new StoreAndManage(name,number1,email));
@@ -62,22 +66,22 @@ public class Contacts {
 		}
     	return null;
     }
-    static boolean numstore() {
+    static void numstore() {
+    	do {
     	Scanner scan = new Scanner(System.in);
     	try {
-        StoreAndManage.p.print("Enter Contact Number = ");
     	long n1 = scan.nextLong();
     	if(n1<=9999999999l && n1>999999999) {
     		number1 = n1;
-        	return false;
+        	break;
     	}
     	else {
-    	return true;
+    		StoreAndManage.p.print("Enter Valid Contact Number = ");
     	}
     	}
     	catch(Exception e) {
-    	return true;
-    	}
+    		StoreAndManage.p.print("Enter Valid Contact Number = ");
+    	}}while(1>0);
     }
     static void store() {
     	StoreAndManage.p.println("Enter the Choice like 1,2,3..7 What You Want !!\n1. Add Details \n2. Delete by Name \n3. Delete By Number\n4. Delete By Email\n5. Search By Name\n6. Search By Number\n7. Search By Email" );
@@ -99,7 +103,8 @@ public class Contacts {
 		    	  }
 		    	  break;
 		      case 3:
-		    	  while(numstore()) ;
+		    	  StoreAndManage.p.print("Enter Contact Number = ");
+		    	  numstore();
 		    	  b = true;
 		      	  for(int i=0;i<list.size();i++) {
 		    			if(list.get(i).number == number1) {
@@ -125,7 +130,8 @@ public class Contacts {
 		    	  k = searchByName(n4);
 		    	  break;
 		      case 6:
-		    	  while(numstore()) ;
+		    	  StoreAndManage.p.print("Enter Contact Number = ");
+		    	  numstore() ;
 		    	  k = searchByNumber(number1);
 		    	  break;
 		      case 7:
