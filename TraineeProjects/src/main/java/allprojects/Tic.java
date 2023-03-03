@@ -57,18 +57,23 @@ public class Tic {
 			}
 		    return false;
 	}
+	static int storeInt() {
+		do {
+			Scanner scan = new Scanner(System.in);
+		    try {
+			return scan.nextInt();
+			}
+			catch(Exception e) {
+			   Tac.p.print("Enter valid dimention : ");
+			}
+		}while(1>0);
+	}
 	public static void methodCall() {
 		Tac.p.println("Enter the dimention for TIC-TAC-TOE Game !!");
-		Scanner scan = new Scanner(System.in);
 		int dimention = 0;
 		int k = 0;
 		int ite = 0;
-		try {
-		dimention = scan.nextInt();
-		}
-		catch(Exception e) {
-			methodCall();
-		}
+		dimention = storeInt();
 		Tac.p.println("         GAME STARTED.....HAVE FUN !!!\n");
 		int [] pos = new int[dimention*dimention];
 		char [][] arr = new char[dimention][dimention];
