@@ -7,9 +7,37 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AllProjects {
+	static PrintStream display=new PrintStream((new FileOutputStream(FileDescriptor.out)));
+	static int choice;
+	static char ch;
+	static void storeInt() {
+		do{
+			try {
+			Scanner scan = new Scanner(System.in);
+			choice = scan.nextInt();
+			break;
+			}
+			catch(Exception e) {
+				display.println("Enter the valid number between 1 to 12 :");
+			}
+		}while(1>0);
+	}
+	static void storeChar() {
+		do{
+			try {
+			Scanner scan = new Scanner(System.in);
+			ch = scan.next().charAt(0);
+			if(ch !='y' && ch !='Y' && ch !='n' &&ch !='N') {
+				throw new InputMismatchException();
+			}
+			break;
+			}
+			catch(Exception e) {
+				display.println("Enter the valid value :");
+			}
+		}while(1>0);
+	}
 	public static void main(String [] args) throws InsufficientFundsException, CloneNotSupportedException, FileNotFoundException {
-		PrintStream display=new PrintStream((new FileOutputStream(FileDescriptor.out)));
-		char ch = 0;
 		do {
 		display.println("Enter the choice you want : \n \t 1.Banking Application \n \t 2.Shapes Calculation"
 					+ "\n \t 3.Student Details"
@@ -22,17 +50,7 @@ public class AllProjects {
 					+ "\n \t 10.Contacts Implementation"
 					+ "\n \t 11.File Operations"
 					+ "\n \t 12.Tic Tac Toe Implementation");
-		int choice=0;
-		do{
-			try {
-			Scanner scan = new Scanner(System.in);
-			choice = scan.nextInt();
-			break;
-			}
-			catch(Exception e) {
-				display.println("Enter the valid number between 1 to 12 :");
-			}
-		}while(1>0);
+		storeInt();
 		switch(choice) {
 		case 1:
 			display.print("\n---------------------Banking Application------------------------\n");
@@ -82,21 +100,13 @@ public class AllProjects {
 			display.print("\n---------------------Tic Tac Toe Implementation------------------------\n");
 			Tic.methodCall();
 			break;
+		default:
+			display.print("\n---------------------Invalid Choice------------------------\n");
+			break;
+			
 		}
 		display.print("Do you want to do more operations Y/N (or) y/n : ");
-		do{
-			try {
-			Scanner scan = new Scanner(System.in);
-			ch = scan.next().charAt(0);
-			if(ch !='y' && ch !='Y' && ch !='n' &&ch !='N') {
-				throw new InputMismatchException();
-			}
-			break;
-			}
-			catch(Exception e) {
-				display.println("Enter the valid value :");
-			}
-		}while(1>0);
+		storeChar();
 		}while(ch == 'y' || ch == 'Y');
 		display.print("---------------------Thank You------------------------");
 	}
