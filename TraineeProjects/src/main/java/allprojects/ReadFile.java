@@ -14,6 +14,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 public class ReadFile {
+	private ReadFile() {
+		
+	}
 	public static void methodCall() throws FileNotFoundException {
 		PrintStream p=new PrintStream((new FileOutputStream(FileDescriptor.out)));
 		final String path = "\\Users\\Janani S\\Documents\\word.txt";
