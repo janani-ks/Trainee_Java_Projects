@@ -108,7 +108,6 @@ public class Contacts {
     static void store() {
     	StoreAndManage.p.println("Enter the Choice like 1,2,3..7 What You Want !!\n1. Add Details \n2. Delete by Name \n3. Delete By Number\n4. Delete By Email\n5. Search By Name\n6. Search By Number\n7. Search By Email" );
 		choice = s1.nextInt();
-		StoreAndManage k = null;
 		switch(choice) {
 		      case 1:
 		    	  add();
