@@ -11,6 +11,9 @@ public class Creditcard
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scan1 = new Scanner(System.in);
 	static boolean b = false;
+	private Creditcard(){
+		
+	}
 	static long storelong() {
 		Scanner scan = new Scanner(System.in);
 		try {
