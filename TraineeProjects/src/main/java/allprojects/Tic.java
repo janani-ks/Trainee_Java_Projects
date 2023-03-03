@@ -8,6 +8,9 @@ public class Tic {
 	static int vindex =0;
 	static char turn = 0;
 	static  boolean b =false;
+	private Tic() {
+		
+	}
 	static void check(int i) {
 		if(i%2==0){
 		    Tac.p.println("1st Player's turn!!");
@@ -18,7 +21,8 @@ public class Tic {
 			turn = 'O';
 		}
 	}
-	static boolean store(int[] pos) {
+	static void store(int[] pos) {
+		do {
 		Scanner scan = new Scanner(System.in);
 		try {
 		int p1 = scan.nextInt();
@@ -31,12 +35,12 @@ public class Tic {
 			hindex = pos[p1-1]/10;
 			vindex = pos[p1-1]%10;
 		}
+		break;
 		}
 		catch(Exception e){
 			Tac.p.println("Enter the correct position:");
-			return false;
 		}
-		return true;
+		}while(1>0);
 	}
 	static boolean check1(int d,char[][] arr) {
 		    if(obj.horizontal(turn,hindex,vindex,arr)|| obj.vertical(turn, hindex,vindex,arr)) {
@@ -80,25 +84,13 @@ public class Tic {
 	    while(ite<dimention*dimention){
 	    	    check(ite);
 				Tac.p.println("Enter the position like 1,2,3...");	
-				boolean m = store(pos);
-				if(m) {
+				store(pos);
 				if(arr[hindex][vindex]==0) {
 					arr[hindex][vindex] = turn;
 				}
 				else {
 					Tac.p.println("Already placed position Enter anyother position !!!");
-					m = store(pos);
-					if(m) {
-					arr[hindex][vindex] = turn;
-					}
-					else {
-						continue;
-					}
-				}
-				}
-				else
-				{
-					continue;
+					store(pos);
 				}
 				b = check1(dimention,arr);
 				obj.printArray(arr);
